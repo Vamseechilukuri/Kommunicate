@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>URL Parameter</title>
+</head>
+<body>
+    <div id = "content">
+    </div>
+    <script>
+        var url=prompt("Enter the Url: ");
+        var parameter=prompt("Enter the Parameter: ");
+        let temp = 0;
+        let parameter_string = url.split('?')[1];
+        let queryString = new URLSearchParams(parameter_string);
+        document.writeln("The value of Parameter is: ")
+        for(let pair of queryString.entries()) {
+            if (pair[0] == parameter){
+                temp = 1;
+                document.getElementById("content").innerHTML += pair[1];
+
+                //document.writeln("The value of the parameter is: "+pair[1] + "<br>");
+            }
+        }
+        if (temp == 0){
+            document.writeln("The value of Parameter is: ")
+            for(let pair of queryString.entries()) {
+                document.getElementById("content").innerHTML += pair[0] + ": " + pair[1] + "<br>";
+                //document.writeln("The value of the parameter is: "+pair[1] + "<br>");
+            }
+        }
+    </script>
+</body>
+</html>
